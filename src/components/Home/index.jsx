@@ -51,7 +51,7 @@ function Home() {
         profilepic={eachPost.profilePhoto} 
         name={eachPost.name}
         postText={eachPost.postText} 
-        postImage={"https://scontent.fkhi22-1.fna.fbcdn.net/v/t39.30808-6/309922856_485168960319322_5861732367481310660_n.jpg?stp=dst-jpg_p526x296&_nc_cat=101&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=Ok4JQBfu3IYAX-rEs5f&_nc_ht=scontent.fkhi22-1.fna&oh=00_AT96C_nvDTfxdEJiyMUeNrWptdtnwgKlXcgv8ufpmpt__A&oe=634D19A6"}></Post>
+        postImage={"https://wallpapercave.com/wp/wp2162760.jpg"}></Post>
         </>
       ))
 

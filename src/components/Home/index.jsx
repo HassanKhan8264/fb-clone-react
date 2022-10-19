@@ -1,16 +1,10 @@
 import {useState , useEffect} from 'react'
 import "./index.css";
-import {BsMoon,BsSun} from 'react-icons/bs'
 import  Post from "./../post"
 import axios from 'axios'
+import Navbar from './../navbar'
+import Stories from './../Stories'
 
-const Sidebar = (props) =>{
-  return <div className="icon">
-    <button type="button" onClick={props.toggleThemeMode}>{(props.Mode === "Lit")? <BsSun />: <BsMoon />}</button>
-
-  </div>
-
-}
 
 function Home() {
   const[posts, setPosts] = useState([]);
@@ -42,8 +36,9 @@ function Home() {
     <div className = {`room ${(isLit === "dark" ? "dark": "Lit")}`}>
     {/* Room is {(isLit === "DARK" ? "dARK": "lIT")} */}
 
-    <Sidebar toggleThemeMode={toggleThemeMode} Mode={isLit} />
+    <Navbar toggleThemeMode={toggleThemeMode} Mode={isLit} />
 
+    <Stories />
     {
       posts.map((eachPost, i) =>(
         <>

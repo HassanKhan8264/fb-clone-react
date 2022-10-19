@@ -1,24 +1,6 @@
-.icon{
-    height:100px;
-    width:100px;
-    border-radius: 100px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-.icon button{
-    height:80px;
-    width:80px;
-    font-size: 40px;
-    border-radius:100px;
-    background: lightgray;
-    border:none;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .room{
-    height:100vh;
+    height:100%;
     margin:0;
     transition: all 2s ease;
 

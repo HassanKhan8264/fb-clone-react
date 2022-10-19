@@ -11,8 +11,13 @@ import share from './share.png'
 import smile from "./commenticon0.png"
 import camera from "./commenticon1.png"
 
+
+
 function Post({profilepic , name , postDate , postText , postImage }) {
-  return <div className="post">
+  return <div className="body">
+   {/* <div className="post"> */}
+    {/* </div> */}
+   <div className="post">
     <div className="postheader">
             <img className="profilepic" src={profilepic} alt="profilepic"/> 
            <div>
@@ -69,6 +74,7 @@ function Post({profilepic , name , postDate , postText , postImage }) {
               </div>
           </div>
         </div>
+  </div>
         }
 // }
 // function Page(){

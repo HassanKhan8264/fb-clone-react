@@ -1,0 +1,82 @@
+.navbar{
+    border:1px solid red;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    height:56px;
+    position:fixed;
+    top:0px;
+    width:100%;
+    background:#FFFFFF;
+}
+.logo{
+    border:1px solid red;
+    width:10%;
+    margin:4px;
+}
+.logo img{
+width:120px;
+/* height:100px; */
+}
+.searchbar{
+    border:1px solid red;
+    width:562px;
+    height:40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    border-radius:20px;
+    background-color: #F0F2F5;
+}
+.searchbar .search-icon{
+    border:1px solid red;
+    margin:10px;
+    font-size:25px;
+    /* color: #F0F2F5; */
+    color:gray;
+    border-radius:100px;
+    /* margin:30px; */
+
+}
+.searchbar input{
+    background-color: #F0F2F5;
+    font-size:18px;
+width:500px;
+margin:6px;
+padding:6px;
+border:none;
+}
+.profilePage{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    width:10%;
+    border:1px solid red;
+
+
+}
+.icon{
+    background-color: #F0F2F5;
+    height:45px;
+    width:45px;
+    border-radius: 100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid red;
+
+}
+.icon button{
+    height:35px;
+    width:35px;
+    font-size: 40px;
+    border-radius:100px;
+    /* background: ; */
+    border:none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

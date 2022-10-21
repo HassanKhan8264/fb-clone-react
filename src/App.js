@@ -34,9 +34,9 @@ import {
 function Post({ profilepic, name, postDate, postText, postImage , className}) {
   
   return (
-    <div className={`Postbody ${className}`}>
+    <div className="Postbody">
       {/* <div className="post"> */}
-      {/* </div> */}
+      {/* </div> */}  
       <div className={`post ${className}`}>
         <div className="postheader">
           <img className="profilepic" src={profilepic} alt="profilepic" />
@@ -96,43 +96,18 @@ function Post({ profilepic, name, postDate, postText, postImage , className}) {
   );
 }
 
-function LeftSide(){
-  return (
-    <Router>
-    <div>
-    <ul>
-      <li>
-        <Link to="/components/videos">Videos Page</Link>
-      </li>
-      <li>
-        <Link to="/components/profile">Profile Page</Link>
-      </li>
-    </ul>
-      <Routes>
-          {/* <Route path="/"/> */}
-          
-          {/* </Route> */}
-          <Route path="/components/videos" element={<Videos />} />
-          
-          {/* </Route> */}
-          {/* <Route path="/Gallery" element={<Gallery />} /> */}
-          
-          {/* </Route> */}
-          <Route path="/components/profile" element={<Profile />} />
-          
-          {/* </Route> */}
-         
-        </Routes>
-  </div>
-    </Router>
-  );
-}
+// function LeftSide(){
+//   return (
+ 
+//   );
+// }
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [isLit, setLit] = useState("dark");
   const toggleThemeMode = () => {
     setLit(!isLit);
+    document.body.style.backgroundColor =  "#F0F2F5";
   }
   useEffect(() => {
     axios.get(
@@ -149,7 +124,7 @@ function App() {
 
   
   return (
-    <div className={`room ${isLit ? "dark" : "Lit"}`}>
+    <div className={`room ${isLit ? document.body.style.backgroundColor = "#F0F2F5" : "Lit"}`}>
       <div className={`navbar ${isLit ? "darkpost" : "Litpost"}`}>
         <div className="logo">
           <img src={logo} alt="logo"></img>
@@ -172,10 +147,42 @@ function App() {
           </div>
         </div>
       </div>
+         <Router>
+    <div className="leftSideMain">
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/components/videos">Videos Page</Link>
+      </li>
+      <li>
+        <Link to="/components/profile">Profile Page</Link>
+      </li>
+ 
+    </ul>
+  </div>
+      <Routes>
+          {/* <Route path="/"/> */}
+          
+          {/* </Route> */}
+          <Route path="/" />
+          <Route path="/components/videos" element={<Videos />} />
+          
+          {/* </Route> */}
+          {/* <Route path="/Gallery" element={<LeftSide />} /> */}
+          
+          {/* </Route> */}
+          <Route path="/components/profile" element={<Profile />} />
+          
+          {/* </Route> */}
+         
+        </Routes>
+    </Router>
     
-      <div className={`Storybody ${isLit ? "darkpost" : "Litpost"}`}>
+      <div className="Storybody">
         <div className="StoriesMain">
-          <div className="StoriesDiv">
+          <div className={`StoriesDiv ${isLit ? "darkpost" : "Litpost"}`}>
             <div className="StoriesHeader">
               <div className="vCat">Stories</div>
               <div className="vCat">Stories</div>
@@ -197,7 +204,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="addImgMain">
+        <div className={`addImgMain ${isLit ? "darkpost" : "Litpost"}`}>
           <div className="comment-main">
             <div className="profile">
               <img className="profilepic" src={profile} alt="profilepic" />
@@ -235,11 +242,11 @@ function App() {
           </div>
         </div>
       </div>
-        <LeftSide/>
+        {/* <LeftSide/> */}
       {posts.map((eachPost, i) => (
         <>
           <Post 
-          className={`post ${isLit ? "darkpost" : "Litpost"}`}
+          className={isLit ? "darkpost" : "Litpost"}
             profilepic={eachPost.profilePhoto}
             name={eachPost.name}
             postText={eachPost.postText}

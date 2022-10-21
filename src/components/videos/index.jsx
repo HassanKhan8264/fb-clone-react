@@ -1,6 +1,9 @@
+import "./index.css"
+
+
 
 function Videos(){
-    return <div>
+    return <div className="videosMainDiv">
         this is video page 
     </div>
     }

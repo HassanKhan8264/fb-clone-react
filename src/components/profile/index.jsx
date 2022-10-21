@@ -1,6 +1,8 @@
+import "./index.css"
+
 
 function Profile(){
-return <div>
+return <div className="profileMainDiv">
     this is profile page
 </div>
 }

@@ -3,6 +3,12 @@
   /* height:100%; */
 /* } */
 /* width */
+/* .red{
+  background: red;
+}
+.black{
+  background: black;
+} */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -27,7 +33,7 @@
 
 .room{
   /* height:100; */
-  /* background-color: #F0F2F5; */
+  background-color:  #F0F2F5;
   border:1px solid red;
   margin:0;
   transition: all 2s ease;
@@ -35,12 +41,13 @@
 }
 .lit{
   transition: all 2s ease;
-  background-color: white;
+  background-color:  #F0F2F5;
   color:black;
 }
 .dark{
-  background-color: black;
+  background-color: "black";
   color:white;
+  color:black;
    transition: all 2s ease;
 }
 .leftSideMain{
@@ -644,7 +651,8 @@ border-radius:100px;
   border-radius:10px;
 }
 .darkpost{
-  background-color: red;
+  background-color: lightgray;
+  color:gray;
 }
 .Litpost{
 background-color: white;

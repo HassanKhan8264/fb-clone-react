@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { BsMoon, BsSun } from "react-icons/bs";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import logo from "./images/logo.png";
 import profile from "./images/profile.jpg";
@@ -166,7 +166,7 @@ function Story({className})  {
 
 function Exam({mode, posts}){
   return(
-    <div>
+    <div className="main">
   <>
               <Story  className={mode ? "darkpost" : "Litpost"}/>
               {posts.map((eachPost, i) => (
@@ -180,7 +180,7 @@ function Exam({mode, posts}){
             ))}
             </>
     </div>
-  )
+  );
 }
 
 function Navbar({mode, toggle}){
@@ -200,7 +200,7 @@ function Navbar({mode, toggle}){
         <div className="profilePage">
           <div className="icon">
             <button type="button" onClick={toggle}>
-              {mode ? <BsMoon /> : <BsSun />}
+              {mode ? <BsMoonFill /> : <BsSunFill />}
             </button>
           </div>
           <div className="icon">
@@ -215,16 +215,9 @@ function Navbar({mode, toggle}){
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [isLit, setLit] = useState("dark");
+  const [isLit, setLit] = useState(true);
   const toggleThemeMode = () => {
-    // if(isLit === "dark"){
       setLit(!isLit)
-    
-      // document.body.style.Color = "white";
-    // }
-    // else{
-      // document.body.style.backgroundColor =  "black";
-    // }
   }
   useEffect(() => {
     axios.get(
@@ -241,7 +234,7 @@ function App() {
 
   
   return (
-    <div className={`room ${isLit ?  "dark" : "Lit"}`}>
+    <div className={` ${(!isLit ?  "Lit" : "dark")}`}>
       <Router>
   
 <Navbar mode={isLit} toggle={toggleThemeMode}/>
@@ -259,13 +252,13 @@ function App() {
       </li>
     </ul>
   </div>
+
       <Routes>
          
           <Route path="/" element={<Exam mode={isLit} posts={posts}/>} />
           <Route path="/components/videos" element={<Videos />} />
           <Route path="/components/profile" element={<Profile />} />
-          
-       
+
         </Routes>
     </Router>
   

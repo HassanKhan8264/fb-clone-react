@@ -18,11 +18,18 @@ import camera from "./images/commenticon1.png";
 import person1 from "./images/person1.jpg";
 import person2 from "./images/person2.jpg";
 import person3 from "./images/person3.jpg";
-
-import Profile from './components/profile';
-import Videos from './components/videos';
+import homeIcon from './images/homepage.png'
+import videoIcon from './images/videos.png';
+import menuIcon from './images/menu.png';
+import sponsor from './images/sponsor1.jpg';
+import live from './images/live.gif';
+import addImg from './images/addImg.png';
+import smily from './images/smily.png';
 // import Story from './components/App.js';
 // import Post from './components/App.js';
+import Profile from './components/profile';
+import Videos from './components/videos';
+import Menu from './components/menu';
 import {
   BrowserRouter as Router,
   Routes,
@@ -130,37 +137,85 @@ function Story({className})  {
         </div>
         <div className={`comment-div ${className}`}>
           <div className={`comment-type ${className}`}>What's on your mind, Hassan?</div>
-          <div className={`comment-icons ${className}`}>
-            <img src={smile} alt="icon" />
-            <img src={camera} alt="icon" />
-            <img src={smile} alt="icon" />
-            <img src={camera} alt="icon" />
-
-            {/* <img src={} alt="icon"> */}
-            {/* <img src={} alt="icon"> */}
-            {/* <img src={} alt="icon"> */}
-          </div>
+        
         </div>
       </div>
       <hr />
       <div className="reactions">
         <div className="icons">
-          <img src={like} alt="like " />
+          <img src={live} alt="like " />
           Live Video
         </div>
 
         <div className="icons">
-          <img src={comment} alt="comment" />
+          <img src={addImg} alt="comment" />
           Photo/Video
         </div>
 
         <div className="icons">
-          <img src={share} alt="share" />
+          <img src={smily} alt="share" />
           Feeling/Activity
         </div>
       </div>
     </div>
   </div>
+  );
+}
+
+function RightSide(mode){
+  return (
+    <div className={`rightSideMain ${mode}`}>
+          <h4>Sponsors</h4>
+        <div className="sponsor">
+        <img src={sponsor} alt="spons"/>  
+        GoDaddy.com
+        </div>
+        <div className="sponsor">
+        <img src={sponsor} alt="spons"/>  
+        GoDaddy.com
+        </div>
+        <div className="request">
+          <div className="requestInfo">
+            <div>Friend Requests</div>
+            <div className="see">See all</div>
+          </div>
+          <div className="name">
+            <img src={profile} alt="person"/>
+          <div className="requestInfo2">
+          <div>Hassan</div>
+            <div className="see">See all</div>
+          </div>
+          <div className="name">
+          <div className="requestInfo2">
+          <div className="del">Confirm</div>
+          <div className="confirm">Delete</div>
+          </div>
+          </div>
+          </div>
+          <div className="name">
+            Contacts
+          </div>
+          <div className="name2">
+            <img src={profile} alt="pro"/>
+            Hassan
+          </div>
+          <div className="name2">
+            <img src={profile} alt="pro"/>
+            Babar
+          </div>
+          <div className="name2">
+            <img src={profile} alt="pro"/>
+            Rizwan
+          </div>
+          <div className="name2">
+            <img src={profile} alt="pro"/>
+            Shaheen
+          </div>
+
+        </div>
+       
+    </div>
+
   );
 }
 
@@ -237,20 +292,71 @@ function App() {
     <div className={` ${(!isLit ?  "Lit" : "dark")}`}>
       <Router>
   
-<Navbar mode={isLit} toggle={toggleThemeMode}/>
+      <Navbar mode={isLit} toggle={toggleThemeMode}/>
+      <RightSide mode={`${(!isLit ? "darkpost" : "Litpost")}`} />
    
-    <div className="leftSideMain">
-    <ul>
-      <li>
-        <Link to="/">Home Page</Link>
-      </li>
-      <li>
-        <Link to="/components/videos">Videos Page</Link>
-      </li>
-      <li>
-        <Link to="/components/profile">Profile Page</Link>
-      </li>
-    </ul>
+    <div className="leftSideMain">    
+      <div className="linkMain">
+        <Link to="/">
+          <div className="linkIcon" data-toggle="tooltip" data-placement="right" title="Home">
+          <img src={homeIcon} alt="home page"/>
+            </div>
+          </Link>
+        <Link className="link" to="/">
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Home">
+          Home
+          </div>
+          </Link>
+      </div>
+
+      <div className="linkMain">
+        <Link  to="/components/profile">
+          <div className="linkIcon profileIcon" data-toggle="tooltip" data-placement="right" title="Profile">
+          <img src={profile} alt="profile"/>
+            </div>
+          </Link>
+        <Link className="link"  to="/components/profile">
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Profile">
+          Hassan Khan
+          </div>
+          </Link>
+      </div>
+
+      <div className="linkMain">
+        <Link   to="/components/videos">
+          <div className="linkIcon" data-toggle="tooltip" data-placement="right" title="Watch">
+          <img src={videoIcon} alt="videos"/>
+            </div>
+          </Link>
+        <Link className="link" to="/components/videos">
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Watch">
+          Watch
+          </div>
+          </Link>
+      </div>
+
+      <div className="linkMain">
+        <Link   to="/components/menu">
+          <div className="linkIcon" data-toggle="tooltip" data-placement="right" title="Menu">
+          <img src={menuIcon} alt="videos"/>
+            </div>
+          </Link>
+        <Link className="link" to="/components/menu">
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+          Menu
+          </div>
+          </Link>
+      </div>
+
+     
+      
+    
+        {/* <Link to="/components/videos">Videos Page</Link> */}
+      
+    
+        {/* <Link to="/components/profile">Profile Page</Link> */}
+      
+    
   </div>
 
       <Routes>
@@ -258,6 +364,7 @@ function App() {
           <Route path="/" element={<Exam mode={isLit} posts={posts}/>} />
           <Route path="/components/videos" element={<Videos />} />
           <Route path="/components/profile" element={<Profile />} />
+          <Route path="/components/menu" element={ <Menu />} />
 
         </Routes>
     </Router>

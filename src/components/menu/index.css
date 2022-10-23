@@ -1,13 +1,12 @@
-.profileMainDiv{
+.MenuMainDiv{
     /* border:1px solid red; */
     height:500px;
     margin:60px auto;
     width:500px;
 }
 @media screen and (max-width:1349px) {
-   .profileMainDiv{
-    margin-top:150px;
+    .MenuMainDiv{
+     margin-top:150px;
+    }
    }
-  }
-
-  
+ 

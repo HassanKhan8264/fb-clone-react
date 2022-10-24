@@ -347,6 +347,52 @@ function App() {
           </div>
           </Link>
       </div>
+      <div className="groups">
+      <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+        <h3>Groups</h3>
+          </div> 
+   
+      <div className="linkMain">
+          <div className="linkIcon profileIcon" data-toggle="tooltip" data-placement="right" title="Menu">
+          <img src={profile} alt="videos"/>
+            </div>
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+          Menu
+          </div>  
+      </div>
+      <div className="linkMain">
+          <div className="linkIcon profileIcon" data-toggle="tooltip" data-placement="right" title="Menu">
+          <img src={profile} alt="videos"/>
+            </div>
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+          Menu
+          </div>  
+      </div>
+      <div className="linkMain">
+          <div className="linkIcon profileIcon" data-toggle="tooltip" data-placement="right" title="Menu">
+          <img src={profile} alt="videos"/>
+            </div>
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+          Menu
+          </div>  
+      </div>
+      <div className="linkMain">
+          <div className="linkIcon profileIcon" data-toggle="tooltip" data-placement="right" title="Menu">
+          <img src={profile} alt="videos"/>
+            </div>
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+          Menu
+          </div>  
+      </div>
+      <div className="linkMain">
+          <div className="linkIcon profileIcon" data-toggle="tooltip" data-placement="right" title="Menu">
+          <img src={profile} alt="videos"/>
+            </div>
+        <div className="linkText" data-toggle="tooltip" data-placement="right" title="Menu">
+          Menu
+          </div>  
+      </div>
+      </div>
 
      
       
@@ -362,9 +408,21 @@ function App() {
       <Routes>
          
           <Route path="/" element={<Exam mode={isLit} posts={posts}/>} />
-          <Route path="/components/videos" element={<Videos />} />
-          <Route path="/components/profile" element={<Profile />} />
-          <Route path="/components/menu" element={ <Menu />} />
+          <Route path="/components/videos" element={<Videos 
+           className={isLit ? "darkpost" : "Litpost"}
+           name={"Hassan Khan"}
+           postImage={"https://www.drift.com/wp-content/uploads/2022/03/Build-Trust-With-Every-Conversation-1-1.png"}
+           />} />
+          <Route path="/components/profile" element={<Profile
+           className={isLit ? "darkpost" : "Litpost"}
+          name={"Hassan Khan"}
+          postImage={"https://scontent.fkhi22-1.fna.fbcdn.net/v/t1.6435-9/123247705_393471168504652_3910947716460889517_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=174925&_nc_eui2=AeE86gIOHOYo9bZByKAx2kkU44d3HhU54q3jh3ceFTnirSa4DC8q9UC3gQ6qxBGf9gMOAdmowIHm8ju-WZDO0oDS&_nc_ohc=jCmMcVt3Nm4AX8Lri57&_nc_ht=scontent.fkhi22-1.fna&oh=00_AT9rgSk-j72r1CPfPelM5aJ5rPm-isAvEvl0-R3rcy4egQ&oe=637B9532"}
+          />} />
+          <Route path="/components/menu" element={ <Menu 
+           className={isLit ? "darkpost" : "Litpost"}
+          name={"Hassan Khan"}
+          postImage={"https://blog.hootsuite.com/wp-content/uploads/2022/08/facebook-marketing-1.png"}
+          />} />
 
         </Routes>
     </Router>

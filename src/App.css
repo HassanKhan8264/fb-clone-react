@@ -539,8 +539,12 @@ border-radius:100px;
   justify-content: center;
   justify-content: space-evenly;
   margin:20px;
+  border:none;
   /* height:40px; */
   /* border-radius: 20px; */
+}
+.comment-type:focus{
+  outline:none;
 }
 .comment-icons{
   background-color: #F0F2F5;

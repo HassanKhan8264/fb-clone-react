@@ -30,6 +30,11 @@ import smily from './images/smily.png';
 import Profile from './components/profile';
 import Videos from './components/videos';
 import Menu from './components/menu';
+
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, getDocs ,doc , query , onSnapshot } from "firebase/firestore";
+
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,6 +42,24 @@ import {
   Link
 } from "react-router-dom";
 
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBqv0Mz6hn-o0nV-6KPATosyp-xnj5FZ7Q",
+  authDomain: "helloworldfirebase-8264.firebaseapp.com",
+  projectId: "helloworldfirebase-8264",
+  storageBucket: "helloworldfirebase-8264.appspot.com",
+  messagingSenderId: "671755468734",
+  appId: "1:671755468734:web:b1800130ff5db74d6543ef",
+  measurementId: "G-PW56CGPZN4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
 function Post({ profilepic, name, postDate, postText, postImage , className}) {
 
@@ -105,6 +128,64 @@ function Post({ profilepic, name, postDate, postText, postImage , className}) {
   );
 }
 function Story({className})  {
+  const [postText, setPostText] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [posts, setPost] = useState([])
+
+  useEffect(() => {
+//     const getData = async () => {
+
+//       const querySnapshot = await getDocs(collection(db, "posts"));
+// querySnapshot.forEach((doc) => {
+//   console.log(`${doc.id} => `, doc.data());
+//   setPost((prev) => {
+//     const newArray = [...prev, doc.data()];
+//     return newArray
+
+//   })
+// });
+// }
+// getData()
+let unsubscribe = null
+const getRealTimeData = () => {
+const q = query(collection(db, "posts"));
+unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const posts = [];
+  querySnapshot.forEach((doc) => {
+      posts.push(doc.data());
+  });
+  setPost(posts)
+  console.log("posts: ", posts);
+});
+
+
+
+}
+getRealTimeData()
+return () => {
+  console.log("cleanup function")
+  unsubscribe();
+}
+
+  },[])
+
+
+  const savePost = async (e) => {
+    e.preventDefault()
+    console.log("postText:", postText)
+    try {
+          const docRef = await addDoc(collection(db, "posts"), {
+          text: postText,
+          createdOn: new Date().getTime(),
+  });
+          console.log("Document written with ID: ", docRef.id);
+}   catch (e) {
+          console.error("Error adding document: ", e);
+}
+
+  }
+
+
   return(
     <div className="Storybody">
     <div className="StoriesMain">
@@ -135,10 +216,26 @@ function Story({className})  {
         <div className="profile">
           <img className="profilepic" src={profile} alt="profilepic" />
         </div>
+
+
+
         <div className={`comment-div ${className}`}>
-          <div className={`comment-type ${className}`}>What's on your mind, Hassan?</div>
-        
+          <form onSubmit={savePost}> 
+          <input  type="text" 
+          className={`comment-type ${className}`} 
+          placeholder="What's on your mind, Hassan?"
+          onChange={(e) => {
+            setPostText(e.target.value)
+
+          }}
+          />
+          <button type="submit">post</button>
+          </form>
         </div>
+      
+
+
+
       </div>
       <hr />
       <div className="reactions">
@@ -157,6 +254,23 @@ function Story({className})  {
           Feeling/Activity
         </div>
       </div>
+        {posts.map((eachPost, i) => (
+          <div className="post" key={i}>
+
+            <h3>
+              {eachPost?.text}
+            </h3>
+
+            <span>
+              {moment(eachPost?.datePublished)
+              .format("Do MMMM, h:mm a")
+              }
+            </span>
+
+          </div>
+
+
+        ))}
     </div>
   </div>
   );

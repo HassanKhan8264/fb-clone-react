@@ -48,6 +48,11 @@ function Story({ className }) {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [editing, setEditing] = useState({
+        editingId: null,
+        editing: ''
+    })
+
     useEffect(() => {
         //     const getData = async () => {
 
@@ -104,14 +109,31 @@ function Story({ className }) {
         console.log('postId', postId)
         await deleteDoc(doc(db, 'posts', postId));
     }
-    const updatePost = async (postId, updatedText) => {
-
-        console.log('postId', postId)
-        await deleteDoc(doc(db, 'posts', postId), {
-            text: updatedText
-
+    const updatePost = async (e) => {
+      e.preventDefault()
+        await deleteDoc(doc(db, 'posts', editing.editingId), {
+            text: editing.editingText
         });
+        setEditing({
+            editingId:null,
+            editingText: ''
+        })
     }
+
+    // const edit = (postId, text) => {
+
+    //     // const updatedState = 
+    //     // posts.map(eachItem => {
+    //     //     if(eachItem.id === postId?.id){
+    //     //         return {...eachItem, isEditing: !eachItem.isEditing}
+
+    //     //     }else{
+    //     //         return eachItem
+    //     //     }
+    //     // })
+
+    //     // setPosts(updatedState)
+    // }
 
     return (
         <div className="Storybody">
@@ -177,7 +199,23 @@ function Story({ className }) {
                 </div>
                 {posts.map((eachPost, i) => (
                     <div className="post" key={i}>
-                        <h3>{eachPost?.text}</h3>
+                        <h3>{(eachPost.id === editing.editingId) ?
+                            <form onSubmit={updatePost}>
+                                <input type="text"
+                                    value={editing.editingText}
+                                    onChange={(e) => {
+                                        setEditing({
+                                            ...editing,
+                                            editingText:
+                                                e.target.value
+                                        })
+                                    }}
+                                    placeholder="Please enter updated value"
+                                />
+                                <button type="submit">Update</button>
+                            </form>
+                            : eachPost?.text}
+                        </h3>
 
                         <span>
                             {moment((eachPost?.createdOn?.seconds * 1000) ?
@@ -188,9 +226,19 @@ function Story({ className }) {
                         <button onClick={() => {
                             deletePost(eachPost.id)
                         }} className='bg-red'>delete</button>
-                        <button onClick={() => {
-                            setPosts()
-                        }}>Edit</button>
+
+                        {(editing.editingId === eachPost?.id) ? null
+                            :
+                            <button onClick={() => {
+
+
+                                setEditing({
+                                    isEditing: eachPost?.postId,
+                                    editingText: eachPost?.text
+                                })
+
+                            }}>Edit</button>
+                        }
                     </div>
                 ))}
             </div>
